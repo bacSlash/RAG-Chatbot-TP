@@ -55,19 +55,14 @@ body {
 .message {
     margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
-}
-
-.message-content {
-    max-width: 70%;
-    padding: 12px 16px;
-    border-radius: 15px;
-    margin-bottom: 5px;
-    font-size: 0.95rem;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 .user-message {
     align-items: flex-end;
+    flex-direction: row-reverse;
 }
 
 .user-message .message-content {
@@ -75,14 +70,34 @@ body {
     color: white;
 }
 
-.bot-message {
-    align-items: flex-start;
+.user-message img {
+    align-self: flex-start;
 }
 
 .bot-message .message-content {
     background: #f0f0ff;
     color: #333;
     border: 1px solid #ddd;
+}
+
+.bot-message img {
+    align-self: flex-start;
+    background: #fafaff;
+    border-radius: 50%;
+}
+
+.message-content {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+}
+
+.message img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 .chat-input-container {
