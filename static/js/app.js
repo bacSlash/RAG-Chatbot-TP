@@ -112,35 +112,33 @@ class ChatInterface {
     addMessage(content, type) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}-message`;
-
+    
+        // Add user or bot logo
+        const logo = document.createElement('img');
+        if (type === 'user') {
+            logo.src = '/static/images/user-logo.jpg'; // Replace with your user logo path
+            logo.alt = 'User';
+        } else {
+            logo.src = '/static/images/logo.jpg'; // TPBot logo
+            logo.alt = 'TPBot';
+        }
+    
         const messageContent = document.createElement('div');
         messageContent.className = 'message-content';
         messageContent.textContent = content;
-
+    
+        messageDiv.appendChild(logo);
         messageDiv.appendChild(messageContent);
-
-        if (type === 'bot') {
-            const actionsDiv = document.createElement('div');
-            actionsDiv.className = 'message-actions';
-
-            const speakerButton = document.createElement('button');
-            speakerButton.className = 'action-button';
-            speakerButton.innerHTML = '<i class="fas fa-volume-up"></i>';
-            speakerButton.addEventListener('click', () => this.speakMessage(content));
-
-            actionsDiv.appendChild(speakerButton);
-            messageDiv.appendChild(actionsDiv);
-        }
-
+    
         this.chatMessages.appendChild(messageDiv);
         this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
-
+    
         // Update chat history
         this.chatHistory.push({
             role: type === 'user' ? 'user' : 'assistant',
             content: content
         });
-    }
+    }    
 
     async speakMessage(text) {
         try {
