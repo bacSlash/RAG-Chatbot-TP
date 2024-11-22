@@ -21,7 +21,7 @@ from gtts import gTTS
 import tempfile
 
 # Initialize Flask app
-app = Flask(__name__, static_url_path='/static', static_folder='static')
+app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
